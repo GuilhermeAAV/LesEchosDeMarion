@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Les Échos de Marion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Raleway:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-background="atelier">
+    <div id="game">
+      <header class="game-header">
+        <div>
+          <h1>Les Échos de Marion</h1>
+          <p>Un otome web interactif où chaque choix résonne.</p>
+        </div>
+        <button id="restart-button" class="ghost-button" hidden>Recommencer</button>
+      </header>
+
+      <main class="game-layout">
+        <section class="scene-view">
+          <div id="background-overlay" class="background-overlay"></div>
+          <div class="dialogue-panel">
+            <div class="speaker-line">
+              <span id="speaker-role" class="speaker-role"></span>
+              <span id="speaker-name" class="speaker-name"></span>
+            </div>
+            <p id="dialogue-text" class="dialogue-text"></p>
+            <div id="choice-container" class="choice-container"></div>
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="journal-card">
+            <h2>Notes de Marion</h2>
+            <p id="journal-entry">
+              Les émotions du conservatoire d&rsquo;Allières ne font que commencer...
+            </p>
+          </section>
+
+          <section class="affection-card">
+            <h2>Liens du Cœur</h2>
+            <ul id="affection-list" class="affection-list"></ul>
+          </section>
+
+          <section class="flag-card">
+            <h2>Moments clés</h2>
+            <ul id="memory-list" class="memory-list"></ul>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="game-footer">
+        Créé pour Marion - Choisissez avec soin, chaque cœur à ses échos.
+      </footer>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
