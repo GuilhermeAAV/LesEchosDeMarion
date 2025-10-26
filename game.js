@@ -40,6 +40,9 @@ const gameData = {
     finalSofia: "Promesse figée dans la lumière du flash.",
     finalHugo: "Serment murmuré au parfum de vanille.",
     finalSolo: "Marion choisit de suivre son propre rythme.",
+    hugoSlip: "Guilherme laisse échapper « Morgane » sous les lanternes.",
+    hugoBreakDirect: "Marion coupe court après le lapsus de Guilherme.",
+    hugoBreakSilence: "Marion quitte le bal, la gorge serrée, sans se retourner.",
   },
   scenes: {
     prologue: {
@@ -365,6 +368,13 @@ const gameData = {
           addMemories: ["finalHugo"],
         },
         {
+          text: "Interpeller Guilherme après l'avoir entendu dire « Morgane ».",
+          require: { flags: ["finalWithHugo"], affection: { hugo: 4 } },
+          next: "festivalHugoSlip",
+          setFlags: ["hugoSlipPath"],
+          addMemories: ["hugoSlip"],
+        },
+        {
           text: "Accueillir la nuit seule, pour écouter sa propre voix.",
           require: {
             any: [
@@ -374,6 +384,27 @@ const gameData = {
           },
           ending: "solo",
           addMemories: ["finalSolo"],
+        },
+      ],
+    },
+    festivalHugoSlip: {
+      speaker: "marion",
+      role: "Pensées",
+      background: "festival",
+      text: `Je le surprends en coulisses. « Morgane, tu peux... » Sa phrase s'éteint quand nos regards se croisent. « Marion, pardon, c'est sorti sans que je réfléchisse. » La musique couvre à peine le silence qui suit.`,
+      journal: `Guilherme vient de m'appeler « Morgane ». Cette fissure sonne comme une fin annoncée.`,
+      choices: [
+        {
+          text: "Le reprendre franchement et refermer le chapitre sur-le-champ.",
+          ending: "hugoBreakDirect",
+          setFlags: ["hugoSlipPath", "relationshipEndedHugo"],
+          addMemories: ["hugoBreakDirect"],
+        },
+        {
+          text: "Me retirer sans éclat, laissant le banquet poursuivre sans moi.",
+          ending: "hugoBreakSilence",
+          setFlags: ["hugoSlipPath", "relationshipEndedHugo"],
+          addMemories: ["hugoBreakSilence"],
         },
       ],
     },
@@ -396,6 +427,20 @@ const gameData = {
       background: "bibliotheque",
       text: `Guilherme m'attire derrière le rideau des cuisines. « J'ai gardé la dernière pâtisserie pour toi. » Son regard est doux. « Restons après la fête. J'ai des histoires à pétrir avec toi, Marion. » Le sucre fond entre nous, aussi sincère que son sourire.`,
       journal: `Guilherme m'apprend que le réconfort peut être audacieux. Nous écrivons un futur à la saveur de vanille.`,
+    },
+    hugoBreakDirect: {
+      speaker: "marion",
+      role: "Pensées",
+      background: "festival",
+      text: `« Je ne suis pas Morgane. » Mes mots tombent nets entre nous. Guilherme baisse les yeux, les plateaux tremblent légèrement. Je rends son tablier et la place que j'occupais près de lui. La musique continue, mais pour nous la scène est vide.`,
+      journal: `J'ai choisi la clarté, même si elle blesse. Notre histoire avec Guilherme s'arrête ici.`,
+    },
+    hugoBreakSilence: {
+      speaker: "marion",
+      role: "Pensées",
+      background: "festival",
+      text: `Je glisse mes mains hors des siennes avant qu'il n'insiste. Sans un mot, je laisse le parfum de vanille derrière moi. Geler ce lien en silence est la seule manière d'avancer.`,
+      journal: `Partir sans éclat reste une rupture. J'apprends à fermer la porte doucement, mais définitivement.`,
     },
     solo: {
       speaker: "marion",
